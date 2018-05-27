@@ -30,6 +30,7 @@ public class Unidad : MonoBehaviour {
 		{
 			this.Seleccionando = true;
 			this.SelectCaja.Inicio(Input.mousePosition);
+		
 		}
 
 		if (this.Seleccionando)
@@ -43,11 +44,10 @@ public class Unidad : MonoBehaviour {
 				//seleccion unidades
 					foreach (MovTester u in this.Testers)
 					{
-
 						Vector2 coordenadasScreen = this.PrinCamara.WorldToScreenPoint(u.transform.position);
 						if (this.SelectCaja.Seleccion.Contains(coordenadasScreen))
 						{
-						if (!u.EstaSeleccionado && u.UninJugador)
+							if (!u.EstaSeleccionado && u.UninJugador)
 							{
 								u.EstaSeleccionado = true;
 								this.SelectUnidades.Add(u);
@@ -103,10 +103,14 @@ public class Unidad : MonoBehaviour {
 			float distancia;
 			PlanoUbicacion.Raycast(rayo, out distancia);
 			Vector3 punto = rayo.GetPoint(distancia);
+			Debug.Log ("punto "+punto);
 
+			Vector3 puntoResta =new Vector3(5,0,5);
 			foreach (MovTester u in this.SelectUnidades)
 			{
 				u.OrdenMov(punto);
+				punto = punto - puntoResta;
+
 			}
 		}
 

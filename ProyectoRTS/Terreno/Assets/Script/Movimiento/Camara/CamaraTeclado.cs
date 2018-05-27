@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CamaraTeclado : MonoBehaviour {
-    public float speed = 8;
+    public float speed = 15;
 
     private Vector3 movement = Vector3.zero;
 
