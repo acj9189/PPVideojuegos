@@ -97,21 +97,20 @@ public class Unidad : MonoBehaviour {
 		}
 
 
-		if (Input.GetMouseButtonDown(1))
-		{
+		if (Input.GetMouseButtonDown (1)) {
 			Ray rayo = PrinCamara.ScreenPointToRay(Input.mousePosition);
 			float distancia;
 			PlanoUbicacion.Raycast(rayo, out distancia);
+
 			Vector3 punto = rayo.GetPoint(distancia);
-			Debug.Log ("punto "+punto);
 
-			Vector3 puntoResta =new Vector3(5,0,5);
-			foreach (MovTester u in this.SelectUnidades)
-			{
-				u.OrdenMov(punto);
-				punto = punto - puntoResta;
-
+			Vector3 puntoResta =new Vector3(0,1,0);
+			punto = punto + puntoResta;
+			Debug.Log (punto);
+			foreach (MovTester u in this.SelectUnidades) {
+				u.OrdenMov (punto);
 			}
+
 		}
 
 	}
