@@ -28,47 +28,57 @@ public class Unidad : MonoBehaviour {
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			this.Seleccionando = true;
-			this.SelectCaja.Inicio(Input.mousePosition);
+			//this.Seleccionando = true;
+			//this.SelectCaja.Inicio(Input.mousePosition);
+			Debug.Log ("Izquierdo");
 		
 		}
 
-		if (this.Seleccionando)
-		{
-			if (Input.GetAxis("Mouse X")!=0 || Input.GetAxis("Mouse Y") != 0)
-			{
-				
+		/*if (this.Seleccionando) {
+			if (Input.GetAxis ("Mouse X") != 0 || Input.GetAxis ("Mouse Y") != 0) {
 				//Arrastrando
-				this.SelectCaja.Arrastre(Input.mousePosition);
-
+				this.SelectCaja.Arrastre (Input.mousePosition);
 				//seleccion unidades
-					foreach (MovTester u in this.Testers)
-					{
-						Vector2 coordenadasScreen = this.PrinCamara.WorldToScreenPoint(u.transform.position);
-						if (this.SelectCaja.Seleccion.Contains(coordenadasScreen))
-						{
-							if (!u.EstaSeleccionado && u.UninJugador)
-							{
-								u.EstaSeleccionado = true;
-								this.SelectUnidades.Add(u);
-							}
+				foreach (MovTester u in this.Testers) {
+					Vector2 coordenadasScreen = this.PrinCamara.WorldToScreenPoint (u.transform.position);
+					if (this.SelectCaja.Seleccion.Contains (coordenadasScreen)) {
+						if (!u.EstaSeleccionado && u.UninJugador) {
+							u.EstaSeleccionado = true;
+							this.SelectUnidades.Add (u);
 						}
-						else
-						{
-							if (u.EstaSeleccionado)
-							{
-								u.EstaSeleccionado = false;
-								this.SelectUnidades.Remove(u);
-							}
+					} else {
+						if (u.EstaSeleccionado) {
+							u.EstaSeleccionado = false;
+							this.SelectUnidades.Remove (u);
 						}
 					}
+				}
 
 			}
 		}
 
-		if (Input.GetMouseButtonUp(0))
+			if (Input.GetMouseButtonDown (1)) {
+				Debug.Log ("Movimiento");
+				/*Ray rayo = PrinCamara.ScreenPointToRay(Input.mousePosition);
+			float distancia;
+			PlanoUbicacion.Raycast(rayo, out distancia);
+
+			Vector3 punto = rayo.GetPoint(distancia);
+
+			Vector3 puntoResta =new Vector3(0,1,0);
+			punto = punto + puntoResta;
+			Debug.Log (punto);
+			foreach (MovTester u in this.SelectUnidades) {
+				u.OrdenMov (punto);
+			}
+
+			}
+
+		}*/
+		if (Input.GetMouseButtonDown(1))
 		{
-			this.Seleccionando = false;
+			Debug.Log ("derechA");
+			/*this.Seleccionando = false;
 			this.SelectCaja.Fin();
 			if (!this.SelectCaja.EsValido())
 			{
@@ -93,25 +103,9 @@ public class Unidad : MonoBehaviour {
 						this.SelectUnidades.Add(u);
 					}
 				}
-			}
+			}*/
 		}
 
-
-		if (Input.GetMouseButtonDown (1)) {
-			Ray rayo = PrinCamara.ScreenPointToRay(Input.mousePosition);
-			float distancia;
-			PlanoUbicacion.Raycast(rayo, out distancia);
-
-			Vector3 punto = rayo.GetPoint(distancia);
-
-			Vector3 puntoResta =new Vector3(0,1,0);
-			punto = punto + puntoResta;
-			Debug.Log (punto);
-			foreach (MovTester u in this.SelectUnidades) {
-				u.OrdenMov (punto);
-			}
-
-		}
 
 	}
 
