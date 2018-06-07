@@ -12,7 +12,7 @@ public class Unidad : MonoBehaviour {
 
     public List<MovTester> Testers;
 	public List<MovTester> SelectUnidades;
-
+///
 	public Faccion faccion;
 	public bool Seleccionando;
 
@@ -23,18 +23,17 @@ public class Unidad : MonoBehaviour {
 		this.Seleccionando = false;
 	}
 
-	// Update is called once per frame
+////	// Update is called once per frame
 	void Update()
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			//this.Seleccionando = true;
-			//this.SelectCaja.Inicio(Input.mousePosition);
-			Debug.Log ("Izquierdo");
+			this.Seleccionando = true;
+			this.SelectCaja.Inicio(Input.mousePosition);
 		
 		}
-
-		/*if (this.Seleccionando) {
+////
+		if (this.Seleccionando) {
 			if (Input.GetAxis ("Mouse X") != 0 || Input.GetAxis ("Mouse Y") != 0) {
 				//Arrastrando
 				this.SelectCaja.Arrastre (Input.mousePosition);
@@ -55,63 +54,56 @@ public class Unidad : MonoBehaviour {
 				}
 
 			}
-		}
+			if (Input.GetMouseButtonUp(0)){
+////				
+				this.Seleccionando = false;
+				this.SelectCaja.Fin();
+				if (!this.SelectCaja.EsValido()){
+////	
+////				//limpiar unidades seleccionadas
+					for (int i=0;i<this.SelectUnidades.Count;i++){
+						this.SelectUnidades[i].EstaSeleccionado = false;
+					}
+					this.SelectUnidades.Clear();
 
-			if (Input.GetMouseButtonDown (1)) {
-				Debug.Log ("Movimiento");
-				/*Ray rayo = PrinCamara.ScreenPointToRay(Input.mousePosition);
+					Ray Rayo = this.PrinCamara.ScreenPointToRay(Input.mousePosition);
+					RaycastHit hit;
+////
+					if (Physics.Raycast(Rayo,out hit, 100)){
+						GameObject go = hit.collider.gameObject;
+						MovTester u = go.GetComponent<MovTester>();
+						if (u != null && u.UninJugador){
+							u.EstaSeleccionado = true;
+							this.SelectUnidades.Add(u);
+						}
+					}
+				}
+			}
+		}
+////	
+		if (Input.GetMouseButtonDown (1)) {
+			Ray rayo = PrinCamara.ScreenPointToRay(Input.mousePosition);
+			Debug.Log ("pos rayo "+rayo.origin);
+
 			float distancia;
 			PlanoUbicacion.Raycast(rayo, out distancia);
+			Debug.Log ("distancia "+distancia);
 
 			Vector3 punto = rayo.GetPoint(distancia);
+			Debug.Log ("punto "+punto);
+			/*Vector3 puntoResta =new Vector3(0,1,0);
 
-			Vector3 puntoResta =new Vector3(0,1,0);
 			punto = punto + puntoResta;
 			Debug.Log (punto);
 			foreach (MovTester u in this.SelectUnidades) {
 				u.OrdenMov (punto);
-			}
-
-			}
-
-		}*/
-		if (Input.GetMouseButtonDown(1))
-		{
-			Debug.Log ("derechA");
-			/*this.Seleccionando = false;
-			this.SelectCaja.Fin();
-			if (!this.SelectCaja.EsValido())
-			{
-
-				//limpiar unidades seleccionadas
-				for (int i=0;i<this.SelectUnidades.Count;i++)
-				{
-					this.SelectUnidades[i].EstaSeleccionado = false;
-				}
-				this.SelectUnidades.Clear();
-
-				Ray Rayo = this.PrinCamara.ScreenPointToRay(Input.mousePosition);
-				RaycastHit hit;
-
-				if (Physics.Raycast(Rayo,out hit, 100))
-				{
-					GameObject go = hit.collider.gameObject;
-					MovTester u = go.GetComponent<MovTester>();
-					if (u != null && u.UninJugador)
-					{
-						u.EstaSeleccionado = true;
-						this.SelectUnidades.Add(u);
-					}
-				}
 			}*/
 		}
-
-
+////
 	}
-
 	public virtual void RemoverUndad(MovTester u){
 		this.Testers.Remove (u);
 		this.SelectUnidades.Remove (u);
 	}
-
 }
+
