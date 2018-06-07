@@ -14,7 +14,7 @@ public class Caminante : MovTester {
 
     public override void OrdenMov(Vector3 MundoPos)
     {
-		Debug.Log(this.agente.SetDestination(MundoPos));
+		this.agente.SetDestination(MundoPos);
     }
 
 
