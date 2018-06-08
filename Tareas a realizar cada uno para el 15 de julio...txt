@@ -3,7 +3,7 @@ Tareas a cumplir para el viernes 15 de junio
 Andres: 
 - Seleccionar objetos diferentes con menu y tener hijos diferentes.
 - Permitir la ubicacion del objeto.
--Disminucion de recursos segun contadores...
+- Disminucion de recursos segun contadores...
 
 Daniel:
 -Corregir minimapa para que sea estatico pero de todo el mapa, es decir que se vea el mapa comleto
@@ -13,6 +13,7 @@ Cristian:
 - Escoger ataque a los enemigos y realizar el ataque.
 - Realizar animacion de ataque dependido de la forma deataque a escoger.
 - huir de ellos segun ciertas variables.
+- Corregir movimiento de la pantalla con el mouse.
 
 
 Sebastian:
