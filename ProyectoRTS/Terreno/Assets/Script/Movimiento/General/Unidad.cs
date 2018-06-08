@@ -16,11 +16,14 @@ public class Unidad : MonoBehaviour {
 	public Faccion faccion;
 	public bool Seleccionando;
 
+	public int distanciaRayo;
+
 	// Use this for initialization
 	void Start()
 	{
 		this.PlanoUbicacion.SetNormalAndPosition(Vector3.up, Vector3.zero);
 		this.Seleccionando = false;
+		distanciaRayo = 100000;
 	}
 
 ////	// Update is called once per frame
@@ -69,7 +72,7 @@ public class Unidad : MonoBehaviour {
 					Ray Rayo = this.PrinCamara.ScreenPointToRay(Input.mousePosition);
 					RaycastHit hit;
 ////
-					if (Physics.Raycast(Rayo,out hit, 100)){
+					if (Physics.Raycast(Rayo,out hit, distanciaRayo)){
 						GameObject go = hit.collider.gameObject;
 						MovTester u = go.GetComponent<MovTester>();
 						if (u != null && u.UninJugador){
@@ -83,13 +86,15 @@ public class Unidad : MonoBehaviour {
 ////	
 		if (Input.GetMouseButtonDown (1)) {
 			Ray rayo = PrinCamara.ScreenPointToRay(Input.mousePosition);
+			Debug.Log("rayo "+rayo);
 
 			RaycastHit distancia;
-			if (Physics.Raycast (rayo, out distancia,100)) {
+			//Debug.Log(Physics.Raycast (rayo, out distancia, 10000000));
+			//Debug.Log (distancia);
+			if (Physics.Raycast (rayo, out distancia,distanciaRayo)) {
 				
 				Vector3 punto = distancia.point;
-				Vector3 Vectorsuma = new Vector3 (0,0,4);
-
+				Vector3 Vectorsuma = new Vector3 (0,0,20);
 				foreach (MovTester u in this.SelectUnidades) {
 					u.OrdenMov (punto);
 					punto = punto + Vectorsuma;
