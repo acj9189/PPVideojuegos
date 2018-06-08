@@ -1,0 +1,13 @@
+Tareas a cumplir para el viernes 15de junio
+
+Andres: 
+Seleccionar objetos diferentes con menu y tenr hijos diferentes, ademas permitir la ubicacion del objeto..
+
+Daniel:
+Corregir minimapa para que sea estatico pero de todo el mapa, es decir que se vea el mapa comleto, crear menu de objetos estaticos
+
+Cristian:
+Escoger ataque a los enemigos y huir de ellos segun ciertas variables
+
+Sebastian:
+Recolecion de recursos con objetos diferentes y disminullendo contadores independentes segun el recurso
