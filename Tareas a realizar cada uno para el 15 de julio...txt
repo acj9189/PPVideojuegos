@@ -6,8 +6,9 @@ Andres:
 - Disminucion de recursos segun contadores...
 
 Daniel:
--Corregir minimapa para que sea estatico pero de todo el mapa, es decir que se vea el mapa comleto
+-Corregir minimapa para que sea estatico pero de todo el mapa, es decir que se vea el mapa completo
 -Crear menu de objetos estaticos.
+-Cambiar el tamaño de los arboles... (segun tamaño de los objetos que se crean)
 
 Cristian:
 - Escoger ataque a los enemigos y realizar el ataque.

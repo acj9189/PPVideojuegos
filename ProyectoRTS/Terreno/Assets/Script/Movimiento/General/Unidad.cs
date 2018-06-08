@@ -35,6 +35,7 @@ public class Unidad : MonoBehaviour {
 			this.SelectCaja.Inicio(Input.mousePosition);
 		
 		}
+			
 ////
 		if (this.Seleccionando) {
 			if (Input.GetAxis ("Mouse X") != 0 || Input.GetAxis ("Mouse Y") != 0) {
