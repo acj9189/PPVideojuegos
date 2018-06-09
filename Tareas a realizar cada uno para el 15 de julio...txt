@@ -1,4 +1,10 @@
-Tareas a cumplir para el viernes 15 de junio
+
+--------------------------------------------
+NO PONER OBJETOS O ANIMACIONES DE LAS TARES A BUSCAR SIN SER APROBADOS POR TODOS
+Y LO QUE DESCARGUEN EN SUS PCS TRATAN DE LIMPIARLOS(ES DECIR QUITAR TODOSLOS OBJETOS QUE NO SE UTILIZAN EN EL OBJETO )
+--------------------------------------------
+
+Tareas a cumplir para el viernes 15 de junio (PRIMERA ENTREGA DE VIDEOJUEGOS)
 
 Andres: 
 - Seleccionar objetos diferentes con menu y tener hijos diferentes.
@@ -19,3 +25,15 @@ Cristian:
 
 Sebastian:
 Recolecion de recursos con objetos diferentes y disminullendo  o aumentadondo contadores independentes segun el recurso
+
+Taras de todos>
+Buscar todos los posibles assets que se necesiten(No meterlos al juego hasta que no esten aprobadsopor todos)
+- Casas
+- Herrerias
+- Almacenes
+- Come rcio
+- Centro urbanos..
+- Minerales..
+- Aldeanos..
+- Buscar diferentes tipo de guerreros...
+- Arbustos de ballas y granjas
