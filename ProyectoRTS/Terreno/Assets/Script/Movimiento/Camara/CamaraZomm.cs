@@ -5,8 +5,8 @@ using UnityEngine;
 public class CamaraZomm : MonoBehaviour {
 
     public Camera sceneCamera;
-    public float minSize = 10;
-    public float maxSize = 20;
+    public float minSize = 50;
+    public float maxSize = 160;
 
     private float currentSize;
 

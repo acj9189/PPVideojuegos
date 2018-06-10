@@ -5,7 +5,7 @@ using UnityEngine;
 public class CamaraMouse : MonoBehaviour {
 
     private int border;             // tamaño del borde de la pantalla donde se activa el movimiento.
-	public float speed = 15;
+	public float speed = 200;
     private Vector2 screenBorder;
     private Vector2 middleScreen;
 
@@ -22,13 +22,13 @@ public class CamaraMouse : MonoBehaviour {
     void Update()
     {
         // Siempre y cuando el mouse se esté moviendo intentamos mover la cámara.
-        if ((Input.GetAxis("Mouse X") != 0) || (Input.GetAxis("Mouse Y") != 0))
-        {
+      //  if ((Input.GetAxis("Mouse X") != 0) || (Input.GetAxis("Mouse Y") != 0))
+        //{
             Vector2 mouse = Input.mousePosition;
-            if ((Input.mousePosition.x < this.border) ||
-                (Input.mousePosition.x > (this.screenBorder.x)) ||
-                (Input.mousePosition.y < this.border) ||
-                (Input.mousePosition.y > (this.screenBorder.y))){
+		if ((Input.mousePosition.x <= (this.border)+100) ||
+                (Input.mousePosition.x >= (this.screenBorder.x)-100) ||
+			(Input.mousePosition.y <= (this.border)+50) ||
+                (Input.mousePosition.y >= (this.screenBorder.y)-50)){
                 // Trazamos el vector de dirección entre la posicion del mouse
                 // y el centro de la pantalla.
                 this.movement = mouse - this.middleScreen;
@@ -39,7 +39,7 @@ public class CamaraMouse : MonoBehaviour {
 
 				this.transform.Translate(this.movement * this.speed *Time.deltaTime);
             }
-        }
+        //}
     }
 }
 
