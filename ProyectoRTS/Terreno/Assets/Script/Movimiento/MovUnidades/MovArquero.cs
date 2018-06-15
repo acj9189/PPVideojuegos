@@ -44,7 +44,9 @@ public class MovArquero : MovTester {
 		//Buqueda Enemigo
 		if(this.tiempo>this.tiempoSalida){
 			this.tiempo = 0;
-			if (this.ActualEnemigo != null) {
+			if(this.ActualEnemigo == null){
+				this.CheckSurrounding ();
+			}else {
 				//this.CheckSurrounding ();
 				float Distancia = Vector3.Distance (
 					this.transform.position,
@@ -73,7 +75,7 @@ public class MovArquero : MovTester {
 	
 	}
 
-	void OnTriggerEnter(Collider other)
+	/*void OnTriggerEnter(Collider other)
 	{
 		if (this.ActualEnemigo == null) {
 
@@ -87,7 +89,7 @@ public class MovArquero : MovTester {
 				}
 			}
 		}
-	}
+	}*/
 
 
 
@@ -114,23 +116,11 @@ public class MovArquero : MovTester {
 			this.transform.position = this.Inicial;
 			this.GetComponent<Animator> ().SetInteger ("Caminata",1);
 		}
-	}
-
-
-
-
-
-
-
-
-
-
-
-
+	}*/
 
 
 	//metodo que busca los enemigos
-	/*public void CheckSurrounding(){
+	public void CheckSurrounding(){
 
 		Collider[] UnidadesCercanas=Physics.OverlapSphere(
 			this.transform.position,
@@ -140,7 +130,7 @@ public class MovArquero : MovTester {
 
 		for (int i = 0; i < UnidadesCercanas.Length; i++) {
 			if (UnidadesCercanas [i].gameObject != this.gameObject) {
-				Unidad posibleEnemigo = UnidadesCercanas [i].GetComponent<Unidad> ();
+				MovTester posibleEnemigo = UnidadesCercanas [i].GetComponent<MovTester> ();
 				Debug.Log(i+"Hola");
 				if(posibleEnemigo!=null){
 					if (posibleEnemigo.faccion != this.faccion) {
@@ -151,5 +141,5 @@ public class MovArquero : MovTester {
 				}
 			}
 		}
-	}*/
+	}
 }
