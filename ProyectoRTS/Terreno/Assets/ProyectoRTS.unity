@@ -3327,6 +3327,7 @@ GameObject:
   - component: {fileID: 1132737704}
   - component: {fileID: 1132737706}
   - component: {fileID: 1132737705}
+  - component: {fileID: 1132737708}
   - component: {fileID: 1132737707}
   m_Layer: 8
   m_Name: Arquero Jugador
@@ -3453,6 +3454,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 900
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1132737708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1132737700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd520c6525825a43be0b9b53aef1245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "da\xF1o": 10
+  tiempoRecarga: 0.5
+  UbicacionDisparo: {fileID: 1958199208}
+  FlechaPrefab: {fileID: 1273240242962548, guid: 11c56b9f11b324743958dcd15da02e81,
+    type: 2}
 --- !u!1 &1138991975
 GameObject:
   m_ObjectHideFlags: 0

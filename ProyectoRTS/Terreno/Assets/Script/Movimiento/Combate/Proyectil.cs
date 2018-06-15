@@ -17,12 +17,15 @@ public class Proyectil : MonoBehaviour {
 
 	void OnCollisionEnter(){
 		Unidad u = gameObject.GetComponent<Unidad> ();
-		if (u != null) {
+		if (u != null && u.tag=="Enemigo") {
+			Debug.Log ("Enemigo "+u.name);
 			this.arma.OnProyectilCollision (this,u);
-		} else {
+		} 
+
+		/*else {
 			Destroy (this.gameObject);
 		
-		}
+		}*/
 			
 	}
 }
