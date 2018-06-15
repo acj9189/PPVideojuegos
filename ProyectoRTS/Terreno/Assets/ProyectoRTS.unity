@@ -364,41 +364,37 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4102542844402188, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
+    - target: {fileID: 4579425895567810, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 759.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4102542844402188, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
+    - target: {fileID: 4579425895567810, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
       propertyPath: m_LocalPosition.y
       value: 70.6
       objectReference: {fileID: 0}
-    - target: {fileID: 4102542844402188, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
+    - target: {fileID: 4579425895567810, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
       propertyPath: m_LocalPosition.z
       value: 666.06226
       objectReference: {fileID: 0}
-    - target: {fileID: 4102542844402188, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
+    - target: {fileID: 4579425895567810, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4102542844402188, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
+    - target: {fileID: 4579425895567810, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4102542844402188, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
+    - target: {fileID: 4579425895567810, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4102542844402188, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
+    - target: {fileID: 4579425895567810, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4102542844402188, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
+    - target: {fileID: 4579425895567810, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4102542844402188, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2.570815
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
@@ -696,7 +692,7 @@ GameObject:
   - component: {fileID: 769204932}
   - component: {fileID: 769204931}
   m_Layer: 5
-  m_Name: BtnArmeria
+  m_Name: BtnCasa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1941,7 +1937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   edificiosPrefabricados:
   - {fileID: 1085011082010248, guid: 83b4183b2309dab4e845a8f4dc65677a, type: 2}
-  - {fileID: 1118052076991028, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
+  - {fileID: 1700073087281162, guid: e3509fa7f1cd67141881ce88ecc1574e, type: 2}
   mainCamera: {fileID: 1103573054}
   layerWhereClick:
     serializedVersion: 2
