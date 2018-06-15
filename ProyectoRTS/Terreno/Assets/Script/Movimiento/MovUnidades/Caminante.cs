@@ -5,17 +5,17 @@ using UnityEngine.AI;
 
 public class Caminante : MovTester {
 
-    private NavMeshAgent agente;
+	private NavMeshAgent agente;
 
-    // Use this for initialization
-    public override void Init () {
-        this.agente = GetComponent<NavMeshAgent>();
+	// Use this for initialization
+	public override void Init () {
+		this.agente = GetComponent<NavMeshAgent>();
 	}
 
-    public override void OrdenMov(Vector3 MundoPos)
-    {
+	public override void OrdenMov(Vector3 MundoPos)
+	{
 		this.agente.SetDestination(MundoPos);
-    }
-
-
+	}
+		
 }
+

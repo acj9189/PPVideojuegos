@@ -34,6 +34,7 @@ public class Armas : MonoBehaviour {
 
 	public void dispara(){
 		this.isRedy = false;
+
 		GameObject p = Instantiate (
 			this.FlechaPrefab,
 			this.UbicacionDisparo.position,

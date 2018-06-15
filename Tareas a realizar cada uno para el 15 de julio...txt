@@ -18,7 +18,7 @@ Daniel:
 
 Cristian:
 - Escoger ataque a los enemigos y realizar el ataque.
-- Realizar animacion de ataque dependido de la forma deataque a escoger.
+- Realizar animacion de ataque dependido de la forma de ataque a escoger.
 - huir de ellos segun ciertas variables.
 - Corregir movimiento de la pantalla con el mouse.
 
