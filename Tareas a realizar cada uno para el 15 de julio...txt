@@ -7,8 +7,8 @@ Y LO QUE DESCARGUEN EN SUS PCS TRATAN DE LIMPIARLOS(ES DECIR QUITAR TODOSLOS OBJ
 Tareas a cumplir para el viernes 15 de junio (PRIMERA ENTREGA DE VIDEOJUEGOS)
 
 Andres: 
-- Seleccionar objetos diferentes con menu y tener hijos diferentes.
-- Permitir la ubicacion del objeto.
+- Seleccionar objetos diferentes con menu y tener hijos diferentes. lIsto
+- Permitir la ubicacion del objeto. Listo
 - Disminucion de recursos segun contadores...
 
 Daniel:
