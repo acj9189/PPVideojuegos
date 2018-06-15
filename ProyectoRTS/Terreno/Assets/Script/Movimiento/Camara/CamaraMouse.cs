@@ -25,10 +25,10 @@ public class CamaraMouse : MonoBehaviour {
       //  if ((Input.GetAxis("Mouse X") != 0) || (Input.GetAxis("Mouse Y") != 0))
         //{
             Vector2 mouse = Input.mousePosition;
-		if ((Input.mousePosition.x <= (this.border)+100) ||
-                (Input.mousePosition.x >= (this.screenBorder.x)-100) ||
-			(Input.mousePosition.y <= (this.border)+50) ||
-                (Input.mousePosition.y >= (this.screenBorder.y)-50)){
+		if ((Input.mousePosition.x <= (this.border)+((this.border*0.9)-this.border)) ||
+			(Input.mousePosition.x >= (this.screenBorder.x)-((this.border*0.9)-this.border)) ||
+			(Input.mousePosition.y <= (this.border)+((this.border*0.9)-this.border)) ||
+			(Input.mousePosition.y >= (this.screenBorder.y)-((this.border*0.9)-this.border))){
                 // Trazamos el vector de dirección entre la posicion del mouse
                 // y el centro de la pantalla.
                 this.movement = mouse - this.middleScreen;

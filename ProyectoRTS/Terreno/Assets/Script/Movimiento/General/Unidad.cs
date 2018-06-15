@@ -84,25 +84,20 @@ public class Unidad : MonoBehaviour {
 				}
 			}
 		}
-////	
 		if (Input.GetMouseButtonDown (1)) {
 			Ray rayo = PrinCamara.ScreenPointToRay(Input.mousePosition);
-			Debug.Log("rayo "+rayo);
 
 			RaycastHit distancia;
-			//Debug.Log(Physics.Raycast (rayo, out distancia, 10000000));
-			//Debug.Log (distancia);
 			if (Physics.Raycast (rayo, out distancia,distanciaRayo)) {
 				
 				Vector3 punto = distancia.point;
-				Vector3 Vectorsuma = new Vector3 (0,0,20);
+				Vector3 Vectorsuma = new Vector3 (0,0,10);
 				foreach (MovTester u in this.SelectUnidades) {
 					u.OrdenMov (punto);
 					punto = punto + Vectorsuma;
 				}
 			}
 		}
-////
 	}
 	public virtual void RemoverUndad(MovTester u){
 		this.Testers.Remove (u);
