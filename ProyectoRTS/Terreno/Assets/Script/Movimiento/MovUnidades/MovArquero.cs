@@ -5,12 +5,12 @@ using UnityEngine.AI;
 
 public class MovArquero : MovTester {
 
-	public float MaxdistanciaCombate=999999999;
+	public float MaxdistanciaCombate=100;
 	public LayerMask Capa;
 
 	private NavMeshAgent agente;
 	private float tiempo;
-	private float tiempoSalida=1f;
+	private float tiempoSalida;
 	private Armas arma;
 	private MovTester ActualEnemigo;
 
@@ -20,6 +20,7 @@ public class MovArquero : MovTester {
 	// Use this for initialization
 	public override void Init () {
 		this.agente = GetComponent<NavMeshAgent>();
+		this.tiempoSalida=1f;
 		this.arma = GetComponent<Armas> ();
 	}
 
@@ -31,13 +32,13 @@ public class MovArquero : MovTester {
 	}
 
 	void Update(){
-		if(this.caminata){
-			if(Vector3.Distance(this.transform.position,this.posicion)<0.4f){
-				this.agente.SetDestination(this.transform.position);
-				this.GetComponent<Animator> ().SetInteger ("Caminar",0);
-				this.caminata = false;
-			}
+
+		if(Vector3.Distance(this.transform.position,this.posicion)<0.4f){
+			this.agente.SetDestination(this.transform.position);
+			this.GetComponent<Animator> ().SetInteger ("Caminar",0);
+			this.caminata = false;
 		}
+
 
 		this.tiempo += Time.deltaTime;
 
@@ -56,12 +57,10 @@ public class MovArquero : MovTester {
 				if(Distancia>this.MaxdistanciaCombate){
 					this.ActualEnemigo = null;
 				}
-			
 			}
-
 		}
 
-		if( this.ActualEnemigo != null){
+		/*if( this.ActualEnemigo != null){
 			Vector3 Objetivo = this.ActualEnemigo.transform.position;
 			this.transform.LookAt (Objetivo);
 			this.transform.Rotate (45,0,0);
@@ -71,52 +70,9 @@ public class MovArquero : MovTester {
 				this.agente.SetDestination (this.transform.position);
 				this.GetComponent<Animator> ().SetInteger ("Caminar",0);
 			}
-		}
+		}*/
 	
 	}
-
-	/*void OnTriggerEnter(Collider other)
-	{
-		if (this.ActualEnemigo == null) {
-
-			if (other.tag == "Enemigo"){
-				MovTester posibleEnemigo = other.GetComponent<MovTester> ();
-
-				if(posibleEnemigo!=null){
-					if (posibleEnemigo.faccion != this.faccion) {
-						this.ActualEnemigo = posibleEnemigo;
-					}
-				}
-			}
-		}
-	}*/
-
-
-
-
-	/*
-	UnityEngine.AI.NavMeshHit hit;
-	bool blocked = NavMesh.Raycast(this.transform.position,this.Jugador.transform.position,out hit, NavMesh.AllAreas); 
-	Debug.DrawLine (this.transform.position,this.Jugador.transform.position,Color.blue);
-	float distance;
-
-	if(!blocked){
-		if (Vector3.Distance (this.transform.position, this.Jugador.transform.position) < 2.5f) {
-			this.transform.position = this.objetivo;
-			this.GetComponent<Animator> ().SetInteger ("Caminata",3);
-			this.Sonido.GetComponent<AudioSource> ().Play();
-		} else {
-			this.GetComponent<NavMeshAgent> ().destination=this.Jugador.transform.position;
-			this.GetComponent<Animator> ().SetInteger ("Caminata",2);
-			this.objetivo = this.transform.position;
-		}
-	}else{
-		this.GetComponent<NavMeshAgent> ().destination = this.Inicial;
-		if(Vector3.Distance(this.Inicial,this.transform.position)<0.5f){
-			this.transform.position = this.Inicial;
-			this.GetComponent<Animator> ().SetInteger ("Caminata",1);
-		}
-	}*/
 
 
 	//metodo que busca los enemigos
@@ -131,12 +87,9 @@ public class MovArquero : MovTester {
 		for (int i = 0; i < UnidadesCercanas.Length; i++) {
 			if (UnidadesCercanas [i].gameObject != this.gameObject) {
 				MovTester posibleEnemigo = UnidadesCercanas [i].GetComponent<MovTester> ();
-				Debug.Log(i+"Hola");
 				if(posibleEnemigo!=null){
 					if (posibleEnemigo.faccion != this.faccion) {
-						Debug.Log ("posible Enemigo " + posibleEnemigo.name);
 						this.ActualEnemigo = posibleEnemigo;
-						Debug.Log ("Enemigo DEfinido " + this.ActualEnemigo.name);
 					}
 				}
 			}
