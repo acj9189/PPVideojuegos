@@ -20,7 +20,7 @@ public class MovAldeano : MovTester {
 	// Use this for initialization
 	public override void Init () {
 		this.huyendo = false;
-		this.MaxdistanciaCombate = 100;
+		this.MaxdistanciaCombate = 200;
 		this.tiempoSalida = 1f;
 		this.agente = GetComponent<NavMeshAgent>();
 	}
@@ -66,30 +66,13 @@ public class MovAldeano : MovTester {
 			if(this.ActualEnemigo == null){
 				this.CheckSurrounding ();
 			}else {
-				Debug.Log ("Enemigo Actual aldeano: "+this.ActualEnemigo.name);
 				this.huyendo = true;
-				//this.CheckSurrounding ();
-				/*if (!this.huyendo) {
-					this.objetivo = this.UbicacionSegura.transform.position;
-					this.huyendo = true;
-					this.GetComponent<NavMeshAgent> ().destination = this.objetivo;
-					this.GetComponent<Animator> ().SetInteger ("Correr", 1);
-					//this.objetivo.y = 0;
-				}
-				Debug.Log ("objetivo "+this.objetivo+ " this.ubicacion "+this.UbicacionSegura.transform.position );
-				if(this.objetivo!= this.UbicacionSegura.transform.position){
-					this.ActualEnemigo = null;
-					this.huyendo = false;
-					this.GetComponent<Animator> ().SetInteger ("Correr", 0);
-				}
+				/*
 				float Distancia = Vector3.Distance (
 					this.transform.position,
 					this.objetivo
 				);
-				if (Distancia <= 0.5) {
-					Destroy (this);
-				}*/
-
+				*/
 			}
 
 			if(this.huyendo){

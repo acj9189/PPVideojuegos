@@ -90,7 +90,7 @@ public class MovArquero : MovTester {
 				if(posibleEnemigo!=null){
 					if (posibleEnemigo.faccion != this.faccion) {
 						this.ActualEnemigo = posibleEnemigo;
-						Debug.Log ("Enemigo de Arquero "+this.ActualEnemigo.name);
+						Debug.Log ("Enemigo de Arquero " + this.ActualEnemigo.name);
 						break;
 					}
 				}
