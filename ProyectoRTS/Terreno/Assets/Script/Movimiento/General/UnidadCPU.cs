@@ -5,8 +5,8 @@ using UnityEngine;
 public class UnidadCPU : Unidad {
 
 	// Use this for initialization
-	void Start () {
+/*	void Start () {
 		Debug.Log ("cpu hola");
-	}
+	}*/
 
 }

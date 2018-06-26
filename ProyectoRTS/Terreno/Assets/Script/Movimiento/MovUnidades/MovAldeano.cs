@@ -7,6 +7,7 @@ public class MovAldeano : MovTester {
 
 	private NavMeshAgent agente;
 	private Vector3 objetivo;
+
 	private MovTester ActualEnemigo;
 	public float MaxdistanciaCombate;
 	public LayerMask Capa;
@@ -27,7 +28,7 @@ public class MovAldeano : MovTester {
 	public override void OrdenMov(Vector3 MundoPos)
 	{
 		this.GetComponent<Animator> ().SetInteger ("Caminar",1);
-		this.GetComponent<NavMeshAgent> ().destination = MundoPos;
+		this.agente.destination = MundoPos;
 		this.objetivo = MundoPos;
 		//this.agente.SetDestination(MundoPos);
 	}
@@ -39,14 +40,13 @@ public class MovAldeano : MovTester {
 			this.MaxdistanciaCombate,
 			this.Capa
 		);
-
 		for (int i = 0; i < UnidadesCercanas.Length; i++) {
 			if (UnidadesCercanas [i].gameObject != this.gameObject) {
 				MovTester posibleEnemigo = UnidadesCercanas [i].GetComponent<MovTester> ();
 				if(posibleEnemigo!=null){
-					if (posibleEnemigo.faccion != this.faccion) {
+					if (posibleEnemigo.faccion.name != this.faccion.name) {
 						this.ActualEnemigo = posibleEnemigo;
-						Debug.Log ("Enemigo "+name);
+						break;
 					}
 				}
 			}
@@ -54,9 +54,9 @@ public class MovAldeano : MovTester {
 	}
 
 	void Update(){
-		if(Vector3.Distance(this.transform.position,this.objetivo)<=0.5 && !this.huyendo){
+		if(Vector3.Distance(this.transform.position,this.objetivo)<=0.5){
 			this.objetivo = this.transform.position;
-			this.GetComponent<NavMeshAgent> ().destination = this.objetivo;
+			this.agente.destination = this.objetivo;
 			this.GetComponent<Animator> ().SetInteger ("Caminar",0);
 		}
 
@@ -66,15 +66,15 @@ public class MovAldeano : MovTester {
 			if(this.ActualEnemigo == null){
 				this.CheckSurrounding ();
 			}else {
+				Debug.Log ("Enemigo Actual aldeano: "+this.ActualEnemigo.name);
+				this.huyendo = true;
 				//this.CheckSurrounding ();
 				/*if (!this.huyendo) {
-					
 					this.objetivo = this.UbicacionSegura.transform.position;
 					this.huyendo = true;
 					this.GetComponent<NavMeshAgent> ().destination = this.objetivo;
 					this.GetComponent<Animator> ().SetInteger ("Correr", 1);
 					//this.objetivo.y = 0;
-					
 				}
 				Debug.Log ("objetivo "+this.objetivo+ " this.ubicacion "+this.UbicacionSegura.transform.position );
 				if(this.objetivo!= this.UbicacionSegura.transform.position){
@@ -91,6 +91,31 @@ public class MovAldeano : MovTester {
 				}*/
 
 			}
+
+			if(this.huyendo){
+				this.objetivo = this.UbicacionSegura.transform.position;	
+				this.objetivo.y = 0;
+				this.agente.destination = this.objetivo;
+				this.GetComponent<Animator> ().SetInteger ("Correr",1);
+			}
 		}
 	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		Debug.Log ("Aldeano Colision "+other.name);
+		
+		if(other.name=="CentroComunitario"){
+			Destroy (this);
+			Destroy (other.gameObject);
+		}
+	}
+	/*void OnCollisionEnter (Collision col)
+	{
+		Debug.Log ("Aldeano Hola");
+		if(col.gameObject.name == "CentroComunitario")
+		{
+			Destroy(col.gameObject);
+		}
+	}*/
 }

@@ -33,7 +33,7 @@ public class MovArquero : MovTester {
 
 	void Update(){
 
-		if(Vector3.Distance(this.transform.position,this.posicion)<0.4f){
+	/*	if(Vector3.Distance(this.transform.position,this.posicion)<0.4f){
 			this.agente.SetDestination(this.transform.position);
 			this.GetComponent<Animator> ().SetInteger ("Caminar",0);
 			this.caminata = false;
@@ -90,6 +90,8 @@ public class MovArquero : MovTester {
 				if(posibleEnemigo!=null){
 					if (posibleEnemigo.faccion != this.faccion) {
 						this.ActualEnemigo = posibleEnemigo;
+						Debug.Log ("Enemigo de Arquero "+this.ActualEnemigo.name);
+						break;
 					}
 				}
 			}
