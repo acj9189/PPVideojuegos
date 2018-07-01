@@ -1,39 +1,16 @@
-
---------------------------------------------
-NO PONER OBJETOS O ANIMACIONES DE LAS TARES A BUSCAR SIN SER APROBADOS POR TODOS
-Y LO QUE DESCARGUEN EN SUS PCS TRATAN DE LIMPIARLOS(ES DECIR QUITAR TODOSLOS OBJETOS QUE NO SE UTILIZAN EN EL OBJETO )
---------------------------------------------
-
-Tareas a cumplir para el viernes 15 de junio (PRIMERA ENTREGA DE VIDEOJUEGOS)
-
-Andres: 
-- Seleccionar objetos diferentes con menu y tener hijos diferentes. lIsto
-- Permitir la ubicacion del objeto. Listo
-- Disminucion de recursos segun contadores...
-
-Daniel:
--Corregir minimapa para que sea estatico pero de todo el mapa, es decir que se vea el mapa completo
--Crear menu de objetos estaticos.
--Cambiar el tamaño de los arboles... (segun tamaño de los objetos que se crean)
-
-Cristian:
-- Escoger ataque a los enemigos y realizar el ataque.
-- Realizar animacion de ataque dependido de la forma de ataque a escoger.
-- huir de ellos segun ciertas variables.
-- Corregir movimiento de la pantalla con el mouse.
-
-
 Sebastian:
-Recolecion de recursos con objetos diferentes y disminullendo  o aumentadondo contadores independentes segun el recurso
+Buscar y descargar asset de armas que no sean a distancia...
+Buscar y descargar asset de diferentes personajes estilo medieval (aldeanos, guerreros y montruos)
+Buscar y descargar especificamente un herrereo y un mago...
+Buscar y descrgar particulas que parescan auras de diferentes colores
+Buscar y descargar modelos de casas y pueblos
 
-Taras de todos>
-Buscar todos los posibles assets que se necesiten(No meterlos al juego hasta que no esten aprobadsopor todos)
-- Casas
-- Herrerias
-- Almacenes
-- Come rcio
-- Centro urbanos..
-- Minerales..
-- Aldeanos..
-- Buscar diferentes tipo de guerreros...
-- Arbustos de ballas y granjas
+
+Andres Y Cristian
+Organizacion Posicion y Movimiento de la camara 
+Organizar animaciones del Personaje 
+Poner Vida al personaje y Vida a algun enemigo
+Logica de enemigos cerca al personaje ataque.
+
+
+ 
