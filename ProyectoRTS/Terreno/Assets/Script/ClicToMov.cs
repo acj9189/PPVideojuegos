@@ -27,10 +27,15 @@ public class ClicToMov : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Vector3.Distance(this.transform.position,this.Objetivo)<=0.5){
-			if(!Atacar){
-				this.Objetivo = this.transform.position;
-				this.jugador.destination = Objetivo;
+
+			this.Objetivo = this.transform.position;
+			this.jugador.destination = Objetivo;
+			this.GetComponent<Animator> ().SetInteger("Caminar",0);
+			this.GetComponent<Animator> ().SetInteger("Correr",1);
+			if(Atacar){
+				this.GetComponent<Animator> ().SetInteger("Pelear",1);
 			}
+			
 		}
 
 
@@ -44,10 +49,14 @@ public class ClicToMov : MonoBehaviour {
 				if (Enemigo == null) {
 					Debug.Log (hit.point);
 					this.Objetivo = hit.point;
+					this.GetComponent<Animator> ().SetInteger("Caminar",1);
 					OrdenMover (hit.point);
+
 					this.Atacar = false;
+
 				} else {
 					this.Objetivo = hit.point;
+					this.GetComponent<Animator> ().SetInteger("Correr",1);
 					OrdenMover (Enemigo.transform.position);
 					this.Atacar = true;
 				}
