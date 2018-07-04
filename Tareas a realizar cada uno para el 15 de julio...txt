@@ -11,6 +11,8 @@ Organizacion Posicion y Movimiento de la camara
 Organizar animaciones del Personaje 
 Poner Vida al personaje y Vida a algun enemigo
 Logica de enemigos cerca al personaje ataque.
+...
+
 
 
  
