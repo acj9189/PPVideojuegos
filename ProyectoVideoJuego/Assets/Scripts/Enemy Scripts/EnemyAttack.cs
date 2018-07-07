@@ -10,18 +10,30 @@ public class EnemyAttack : MonoBehaviour {
 	private Animator anim;
 	private bool finishedAttack = true;
 	private float damageDistance = 2f;
-
+	private bool jugador;
 	private PlayerHealth playerHealth;
 
 	void Awake () {
-		playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
+		playerTarget = null;
 		anim = GetComponent<Animator> ();
-
-		playerHealth = playerTarget.GetComponent<PlayerHealth> ();
+		jugador = false;
+		playerHealth = null;
 
 	}
 
 	void Update () {
+		if(!this.jugador){
+			if(this.playerTarget==null){
+				playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
+				playerHealth = playerTarget.GetComponent<PlayerHealth> ();
+			}
+			if (this.playerTarget != null) {
+				this.jugador = true;
+			}
+
+		}
+
+
 		if (finishedAttack) {
 			DealDamage (CheckIfAttacking());
 		} else {

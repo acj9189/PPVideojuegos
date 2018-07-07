@@ -47,13 +47,13 @@ public class EnemyControl : MonoBehaviour {
 
 	// HEALTH SCRIPT
 	private EnemyHealth enemyHealth;
-
+	private bool jugador;
 	void Awake () {
-		playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
+		playerTarget =null;
 		navAgent = GetComponent<NavMeshAgent> ();
 		charController = GetComponent<CharacterController> ();
 		anim = GetComponent<Animator> ();
-
+		jugador = false;
 		initialPosition = transform.position;
 		whereTo_Navigate = transform.position;
 
@@ -61,6 +61,15 @@ public class EnemyControl : MonoBehaviour {
 	}
 
 	void Update () {
+		if(!this.jugador){
+			if(this.playerTarget==null){
+				playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
+			}
+			if (this.playerTarget != null) {
+				this.jugador = true;
+			}
+
+		}
 
 		// IF HEALTH IS <= 0 WE WILL SET THE STATE TO DEATH
 		if(enemyHealth.health <= 0f) {

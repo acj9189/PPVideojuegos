@@ -11,7 +11,7 @@ public class PlayerAttack : MonoBehaviour {
 	public Image fillWaitImage_4;
 	public Image fillWaitImage_5;
 	public Image fillWaitImage_6;
-
+	private Image[] fill;
 	private int[] fadeImages = new int[] {0, 0, 0, 0, 0, 0};
 
 	private Animator anim;
@@ -22,6 +22,37 @@ public class PlayerAttack : MonoBehaviour {
 	void Awake () {
 		anim = GetComponent<Animator> ();	
 		playerMove = GetComponent<PlayerMove> ();
+		/*
+		fillWaitImage_1 = FindObjectOfType<Image>("fill Wait 1");
+		fillWaitImage_2 = GameObject.FindGameObjectWithTag ("fill wait 2");
+		fillWaitImage_3 = GameObject.FindGameObjectWithTag ("fill wait 3");
+		fillWaitImage_4 = GameObject.FindGameObjectWithTag ("fill wait 4");
+		fillWaitImage_5 = GameObject.FindGameObjectWithTag ("fill wait 5");
+		fillWaitImage_6 = GameObject.FindGameObjectWithTag ("fill wait 6");*/
+		fill = FindObjectsOfType<Image> ();
+
+		for(int i=0;i<fill.Length;i++){
+			Debug.Log ("Cordanedas ---------------"+fill[i].name);
+
+			if(fill[i].name=="Fill Wait 1"){
+				fillWaitImage_1 = fill [i];
+			}
+			if(fill[i].name=="Fill Wait 2"){
+				fillWaitImage_2 = fill [i];
+			}
+			if(fill[i].name=="Fill Wait 3"){
+				fillWaitImage_3 = fill [i];
+			}
+			if(fill[i].name=="Fill Wait 4"){
+				fillWaitImage_4 = fill [i];
+			}
+			if(fill[i].name=="Fill Wait 5"){
+				fillWaitImage_5 = fill [i];
+			}
+			if(fill[i].name=="Fill Wait 6"){
+				fillWaitImage_6 = fill [i];
+			}
+		}
 	}
 
 	void Update () {
