@@ -28,8 +28,7 @@ public class BossControlCornudo : MonoBehaviour {
 		} else {
 
 			anim.SetInteger ("Transicion", 3);
-
-			if (!anim.IsInTransition (0) && anim.GetCurrentAnimatorStateInfo (0).IsName ("GolpeaDer")) {
+			if (!anim.IsInTransition (0) && ((anim.GetCurrentAnimatorStateInfo (0).IsName ("GolpearDer"))| (anim.GetCurrentAnimatorStateInfo (0).IsName ("GolpearIzq") ))) {
 				finishedAttacking = true;
 			}
 		}
@@ -38,16 +37,14 @@ public class BossControlCornudo : MonoBehaviour {
 	void GetStateControl() {
 		if (bossStateChecker.BossState == Boss_State.DEATH) {
 
+			Debug.Log ("Bos..... start.....");
 			navAgent.isStopped = true;
-
 			anim.SetInteger ("Transicion", 4);
-
-			Destroy (gameObject, 3f);
+			Destroy (gameObject, 9f);
 
 		} else {
 
 			if (bossStateChecker.BossState == Boss_State.PAUSE) {
-
 				navAgent.isStopped = false;
 				anim.SetInteger ("Transicion", 1);
 
@@ -56,7 +53,7 @@ public class BossControlCornudo : MonoBehaviour {
 			} else if (bossStateChecker.BossState == Boss_State.ATTACK) {
 
 				//anim.SetBool ("Run", false);
-				anim.SetInteger ("Transicion", 1);
+				anim.SetInteger ("Transicion", 3);
 
 				Vector3 targetPosition = new Vector3 (playerTarget.position.x, transform.position.y,
 					playerTarget.position.z);
@@ -67,7 +64,7 @@ public class BossControlCornudo : MonoBehaviour {
 				if (currentAttackTime >= waitAttackTime) {
 
 					int atkRange = Random.Range (1, 5);
-					anim.SetInteger ("Transicion", 2);
+					anim.SetInteger ("Transicion", 0);
 
 					currentAttackTime = 0f;
 					finishedAttacking = false;
