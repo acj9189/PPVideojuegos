@@ -37,7 +37,7 @@ public class BossControlCornudo : MonoBehaviour {
 	void GetStateControl() {
 		if (bossStateChecker.BossState == Boss_State.DEATH) {
 
-			Debug.Log ("Bos..... start.....");
+		//	Debug.Log ("Bos..... start.....");
 			navAgent.isStopped = true;
 			anim.SetInteger ("Transicion", 4);
 			Destroy (gameObject, 9f);
@@ -64,7 +64,7 @@ public class BossControlCornudo : MonoBehaviour {
 				if (currentAttackTime >= waitAttackTime) {
 
 					int atkRange = Random.Range (1, 5);
-					anim.SetInteger ("Transicion", 0);
+					anim.SetInteger ("Transicion", 1);
 
 					currentAttackTime = 0f;
 					finishedAttacking = false;
@@ -83,45 +83,3 @@ public class BossControlCornudo : MonoBehaviour {
 	}
 
 } // class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
