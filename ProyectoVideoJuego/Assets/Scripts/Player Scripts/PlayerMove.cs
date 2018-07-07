@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerMove : MonoBehaviour {
+public class PlayerMove : NetworkBehaviour {
 
 	private Animator anim;
 	private CharacterController charController;
 	private CollisionFlags collisionFlags = CollisionFlags.None;
+	public Camera camaraPrincipal;
 
 	private TagEnemy Enemigo;
 
@@ -25,9 +27,18 @@ public class PlayerMove : MonoBehaviour {
 	void Awake () {
 		anim = GetComponent<Animator> ();
 		charController = GetComponent<CharacterController> ();
+
 	}
 
 	void Update () {
+		if (!isLocalPlayer) {
+			return;
+		}
+		if(isLocalPlayer){
+			if (!camaraPrincipal.gameObject.activeInHierarchy) {
+				camaraPrincipal.gameObject.SetActive (true);
+			}
+		}
 		CalculateHeight ();
 		CheckIfFinishedMovement ();
 	}
@@ -64,7 +75,7 @@ public class PlayerMove : MonoBehaviour {
 
 	void MoveThePlayer() {
 		if (Input.GetMouseButtonDown (0)) {
-
+			if(isLocalPlayer){
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
 
@@ -91,6 +102,8 @@ public class PlayerMove : MonoBehaviour {
 
 				}
 
+				}
+			
 			}
 		} // if mouse button down
 

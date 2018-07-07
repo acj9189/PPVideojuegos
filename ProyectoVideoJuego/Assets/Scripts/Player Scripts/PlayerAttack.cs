@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class PlayerAttack : MonoBehaviour {
+public class PlayerAttack : NetworkBehaviour {
 
 	public Image fillWaitImage_1;
 	public Image fillWaitImage_2;
@@ -68,6 +69,10 @@ public class PlayerAttack : MonoBehaviour {
 	}
 
 	void CheckInput () {
+
+		if (!isLocalPlayer) {
+			return;
+		}
 
 		if (anim.GetInteger ("Atk") == 0) {
 			playerMove.FinishedMovement = false;

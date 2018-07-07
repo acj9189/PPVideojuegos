@@ -34,7 +34,7 @@ public class EnemyControlAnotherWay : MonoBehaviour {
 
 	void Update () {
 		if(!this.jugador){
-			if(this.playerTarget==null){
+			if(this.playerTarget==null && GameObject.FindGameObjectWithTag ("Player")!=null){
 				playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
 			}
 			if (this.playerTarget != null) {
@@ -45,7 +45,7 @@ public class EnemyControlAnotherWay : MonoBehaviour {
 
 
 
-		if (enemyHealth.health > 0) {
+		if (enemyHealth.health > 0 && playerTarget!=null) {
 
 			MoveAndAttack ();
 

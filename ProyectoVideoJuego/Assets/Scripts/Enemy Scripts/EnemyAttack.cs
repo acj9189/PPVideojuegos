@@ -19,11 +19,12 @@ public class EnemyAttack : MonoBehaviour {
 		jugador = false;
 		playerHealth = null;
 
+
 	}
 
 	void Update () {
 		if(!this.jugador){
-			if(this.playerTarget==null){
+			if(this.playerTarget==null && GameObject.FindGameObjectWithTag ("Player")!=null){
 				playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
 				playerHealth = playerTarget.GetComponent<PlayerHealth> ();
 			}

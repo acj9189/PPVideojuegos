@@ -62,7 +62,7 @@ public class EnemyControl : MonoBehaviour {
 
 	void Update () {
 		if(!this.jugador){
-			if(this.playerTarget==null){
+			if(this.playerTarget==null && GameObject.FindGameObjectWithTag ("Player")!=null){
 				playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
 			}
 			if (this.playerTarget != null) {

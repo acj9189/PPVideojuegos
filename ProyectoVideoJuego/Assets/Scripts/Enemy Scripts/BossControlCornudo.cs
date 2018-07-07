@@ -13,15 +13,25 @@ public class BossControlCornudo : MonoBehaviour {
 	private bool finishedAttacking = true;
 	private float currentAttackTime;
 	private float waitAttackTime = 1f;
-
+	private bool jugador;
 	void Awake () {
-		playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
+		playerTarget = null;
 		bossStateChecker = GetComponent<BossStateChecker> ();
 		navAgent = GetComponent<NavMeshAgent> ();
 		anim = GetComponent<Animator> ();
+		jugador = false;
 	}
 
 	void Update () {
+		if(!this.jugador){
+			if(this.playerTarget==null && GameObject.FindGameObjectWithTag ("Player")!=null){
+				playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
+			}
+			if (this.playerTarget != null) {
+				this.jugador = true;
+			}
+		}
+
 
 		if (finishedAttacking) {
 			GetStateControl();

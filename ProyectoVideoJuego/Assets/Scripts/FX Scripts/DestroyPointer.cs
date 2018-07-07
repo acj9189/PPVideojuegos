@@ -7,13 +7,18 @@ public class DestroyPointer : MonoBehaviour {
 	private Transform player;
 
 	void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player").transform;
+		player = null;
 	}
 
 	void Update () {
+		if (player==null && GameObject.FindGameObjectWithTag ("Player") != null) {
+			player = GameObject.FindGameObjectWithTag ("Player").transform;
+		}
+		if(player!=null){
 		if (Vector3.Distance (transform.position, player.position) <= 1f) {
 			Destroy (gameObject);
 		}	
+		}
 	}
 
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BossSpecialAttacks : MonoBehaviour {
 
 	public GameObject bossFire;
@@ -10,7 +11,7 @@ public class BossSpecialAttacks : MonoBehaviour {
 	private Transform playerTarget;
 
 	void Awake () {
-		playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
+//		playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
 	}
 	
 	void BossFireTornado() {

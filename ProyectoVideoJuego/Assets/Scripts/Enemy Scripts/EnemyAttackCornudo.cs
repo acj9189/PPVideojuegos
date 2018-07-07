@@ -12,16 +12,29 @@ public class EnemyAttackCornudo : MonoBehaviour {
 	private float damageDistance = 2f;
 
 	private PlayerHealth playerHealth;
-
+	private bool jugador;
 	void Awake () {
-		playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
+		playerTarget =null;
 		anim = GetComponent<Animator> ();
 
-		playerHealth = playerTarget.GetComponent<PlayerHealth> ();
-
+		playerHealth = null;
+		jugador = false;
 	}
 
 	void Update () {
+
+		if(!this.jugador){
+			if(this.playerTarget==null && GameObject.FindGameObjectWithTag ("Player")!=null){
+				playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
+				playerHealth = playerTarget.GetComponent<PlayerHealth> ();
+			}
+			if (this.playerTarget != null) {
+				this.jugador = true;
+			}
+
+		}
+
+
 		if (finishedAttack) {
 			DealDamage (CheckIfAttacking());
 		} else {

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class CameraFollow : MonoBehaviour {
+public class CameraFollow : NetworkBehaviour {
 
 	public float follow_Height = 8f;
 	public float follow_Distance = 6f;
@@ -24,8 +25,10 @@ public class CameraFollow : MonoBehaviour {
 	void Update () {
 
 		if(!this.jugador){
-			if(this.player==null){
+			if(this.player==null && GameObject.FindGameObjectWithTag ("Player")!=null){
 				player = GameObject.FindGameObjectWithTag ("Player").transform;
+				if(isLocalPlayer){
+				}
 			}
 			if (this.player != null) {
 				this.jugador = true;
@@ -46,8 +49,9 @@ public class CameraFollow : MonoBehaviour {
 
 		transform.position = target_Position;
 		transform.LookAt (player);*/
-
-		this.transform.position = player.position;
+		if(this.player!=null){
+			this.transform.position = player.position;
+		}
 	}
 
 } // class
