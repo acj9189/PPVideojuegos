@@ -13,6 +13,8 @@ public class PlayerHealth : MonoBehaviour {
 
 	private Image health_Img;
 
+	public GameObject gameover;
+
 	void Awake() {
 		anim = GetComponent<Animator> ();
 
@@ -33,12 +35,14 @@ public class PlayerHealth : MonoBehaviour {
 
 			if (health <= 0f) {
 				anim.SetBool ("Death", true);
-
+				Debug.Log ("Muerte");
+				this.gameover.SetActive(true);
 				if (!anim.IsInTransition (0) && anim.GetCurrentAnimatorStateInfo (0).IsName ("Death")
 				   && anim.GetCurrentAnimatorStateInfo (0).normalizedTime >= 0.95) {
 					// PLAYER DIED 
 					// DESTROY PLAYER
 //					Destroy(gameObject, 2f);
+
 				}
 			}
 		}

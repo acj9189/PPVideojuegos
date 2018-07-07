@@ -9,16 +9,29 @@ public class CameraFollow : MonoBehaviour {
 
 	private Transform player;
 
+	private bool jugador;
+
 	private float target_Height;
 	private float current_Height;
 	private float current_Rotation;
 
 	void Awake () {
-		player = GameObject.FindGameObjectWithTag ("Player").transform;
+		this.jugador = false;
+		player = null;
 		//this.transform.position = this.jugadorASeguir.transform.position; 
 	}
 
 	void Update () {
+
+		if(!this.jugador){
+			if(this.player==null){
+				player = GameObject.FindGameObjectWithTag ("Player").transform;
+			}
+			if (this.player != null) {
+				this.jugador = true;
+			}
+				
+		}
 		/*target_Height = player.position.y + follow_Height ;
 
 		current_Rotation = transform.eulerAngles.y ;
