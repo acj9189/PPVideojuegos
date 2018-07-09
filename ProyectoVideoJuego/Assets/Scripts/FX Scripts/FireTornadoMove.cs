@@ -20,15 +20,18 @@ public class FireTornadoMove : MonoBehaviour {
 	}
 
 	void Update () {
+
 		Move ();
 		CheckForDamage ();
 	}
 
 	void Move() {
+
 		transform.Translate (Vector3.forward * (speed * Time.deltaTime));
 	}
 
 	void CheckForDamage() {
+
 		Collider[] hits = Physics.OverlapSphere (transform.position, radius, enemyLayer);
 
 		foreach (Collider c in hits) {
@@ -46,43 +49,3 @@ public class FireTornadoMove : MonoBehaviour {
 	}
 
 } // class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

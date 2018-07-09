@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+//using UnityEngine.Networking;
 public class EnemyControlAnotherWay : MonoBehaviour {
 
 	public Transform[] walkPoints;
@@ -33,29 +33,27 @@ public class EnemyControlAnotherWay : MonoBehaviour {
 	}
 
 	void Update () {
-		if(!this.jugador){
-			if(this.playerTarget==null && GameObject.FindGameObjectWithTag ("Player")!=null){
+		if (!this.jugador) {
+			if (this.playerTarget == null && GameObject.FindGameObjectWithTag ("Player") != null) {
 				playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
+			} else {
+				return;
 			}
 			if (this.playerTarget != null) {
 				this.jugador = true;
 			}
-
 		}
-
-
-
-		if (enemyHealth.health > 0 && playerTarget!=null) {
-
+		if (enemyHealth.health > 0 ) {
 			MoveAndAttack ();
 
 		} else {
+
 			anim.SetBool ("Death", true);
 			navAgent.enabled = false;
 
+
 			if (!anim.IsInTransition (0) && anim.GetCurrentAnimatorStateInfo (0).IsName ("Death")
 				&& anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f) {
-
 				Destroy (gameObject, 2f);
 			}
 		}
@@ -65,7 +63,6 @@ public class EnemyControlAnotherWay : MonoBehaviour {
 		float distance = Vector3.Distance (transform.position, playerTarget.position);
 
 		if (distance > walk_Distance) {
-
 			if (navAgent.remainingDistance <= 0.5f) {
 
 				navAgent.isStopped = false;
@@ -123,35 +120,4 @@ public class EnemyControlAnotherWay : MonoBehaviour {
 	}
 
 } // class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	

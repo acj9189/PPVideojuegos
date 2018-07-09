@@ -18,21 +18,20 @@ public class EnemyAttack : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		jugador = false;
 		playerHealth = null;
-
-
 	}
 
 	void Update () {
-		if(!this.jugador){
-			if(this.playerTarget==null && GameObject.FindGameObjectWithTag ("Player")!=null){
+		if (!this.jugador) {
+			if (this.playerTarget == null && GameObject.FindGameObjectWithTag ("Player") != null) {
 				playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
 				playerHealth = playerTarget.GetComponent<PlayerHealth> ();
+			} else {
+				return;
 			}
 			if (this.playerTarget != null) {
 				this.jugador = true;
 			}
-
-		}
+		} 
 
 
 		if (finishedAttack) {

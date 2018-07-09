@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireShield : MonoBehaviour {
+public class FireShield :MonoBehaviour {
 
 	private PlayerHealth playerHealth;
 
@@ -11,10 +11,12 @@ public class FireShield : MonoBehaviour {
 	}
 	
 	void OnEnable() {
+
 		playerHealth.Shielded = true;
 	}
 
 	void OnDisable() {
+
 		playerHealth.Shielded = false;
 	}
 

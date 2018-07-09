@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerAttackEffects : MonoBehaviour {
+
+public class PlayerAttackEffects : NetworkBehaviour {
 
 	public GameObject groundImpact_Spawn, kickFX_Spawn, fireTornado_Spawn, fireShield_Spawn;
 
@@ -10,24 +12,39 @@ public class PlayerAttackEffects : MonoBehaviour {
 		healFX_Prefab, thunderFX_Prefab;
 	
 	void GroundImpact() {
+		if (!isLocalPlayer) {
+			return;
+		}
 		Instantiate (groundImpact_Prefab, groundImpact_Spawn.transform.position, Quaternion.identity);
 	}
 
 	void Kick() {
+		if (!isLocalPlayer) {
+			return;
+		}
 		Instantiate (kickFX_Prefab, kickFX_Spawn.transform.position, Quaternion.identity);
 	}
 
 	void FireTornado() {
+		if (!isLocalPlayer) {
+			return;
+		}
 		Instantiate (fireTornado_Prefab, fireTornado_Spawn.transform.position, Quaternion.identity);
 	}
 
 	void FireShield() {
+		if (!isLocalPlayer) {
+			return;
+		}
 		GameObject fireObj = Instantiate (fireShield_Prefab, fireShield_Spawn.transform.position, 
 			                     Quaternion.identity) as GameObject;
 		fireObj.transform.SetParent (transform);
 	}
 
 	void Heal() {
+		if (!isLocalPlayer) {
+			return;
+		}
 		Vector3 temp = transform.position;
 		temp.y += 2f;
 		GameObject healObj = Instantiate (healFX_Prefab, temp, Quaternion.identity) as GameObject;
@@ -35,7 +52,9 @@ public class PlayerAttackEffects : MonoBehaviour {
 	}
 
 	void ThunderAttack() {
-		
+		if (!isLocalPlayer) {
+			return;
+		}
 		for (int i = 0; i < 8; i++) {
 			
 			Vector3 pos = Vector3.zero;

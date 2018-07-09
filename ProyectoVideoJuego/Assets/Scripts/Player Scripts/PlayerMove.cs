@@ -57,6 +57,9 @@ public class PlayerMove : NetworkBehaviour {
 
 	void CheckIfFinishedMovement() {
 		// if we DID NOT finished movement
+		if (!isLocalPlayer) {
+			return;
+		}
 		if (!finished_Movement) {
 			if (!anim.IsInTransition (0) && !anim.GetCurrentAnimatorStateInfo (0).IsName ("Stand")
 			    && anim.GetCurrentAnimatorStateInfo (0).normalizedTime >= 0.8f) {
@@ -74,6 +77,9 @@ public class PlayerMove : NetworkBehaviour {
 	}
 
 	void MoveThePlayer() {
+		if (!isLocalPlayer) {
+			return;
+		}
 		if (Input.GetMouseButtonDown (0)) {
 			if(isLocalPlayer){
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -147,39 +153,3 @@ public class PlayerMove : NetworkBehaviour {
 	}
 
 } // class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

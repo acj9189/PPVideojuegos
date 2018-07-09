@@ -12,6 +12,7 @@ public class SkillDamage : MonoBehaviour {
 	private bool collided;
 
 	void Update () {
+
 		Collider[] hits = Physics.OverlapSphere (transform.position, radius, enemyLayer);
 
 		foreach (Collider c in hits) {
@@ -31,31 +32,3 @@ public class SkillDamage : MonoBehaviour {
 
 
 } // class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

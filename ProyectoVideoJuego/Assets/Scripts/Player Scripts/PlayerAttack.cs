@@ -23,40 +23,35 @@ public class PlayerAttack : NetworkBehaviour {
 	void Awake () {
 		anim = GetComponent<Animator> ();	
 		playerMove = GetComponent<PlayerMove> ();
-		/*
-		fillWaitImage_1 = FindObjectOfType<Image>("fill Wait 1");
-		fillWaitImage_2 = GameObject.FindGameObjectWithTag ("fill wait 2");
-		fillWaitImage_3 = GameObject.FindGameObjectWithTag ("fill wait 3");
-		fillWaitImage_4 = GameObject.FindGameObjectWithTag ("fill wait 4");
-		fillWaitImage_5 = GameObject.FindGameObjectWithTag ("fill wait 5");
-		fillWaitImage_6 = GameObject.FindGameObjectWithTag ("fill wait 6");*/
 		fill = FindObjectsOfType<Image> ();
 
 		for(int i=0;i<fill.Length;i++){
-			Debug.Log ("Cordanedas ---------------"+fill[i].name);
-
-			if(fill[i].name=="Fill Wait 1"){
+			if (fill [i].name == "Fill Wait 1") {
 				fillWaitImage_1 = fill [i];
-			}
-			if(fill[i].name=="Fill Wait 2"){
+				fillWaitImage_1.gameObject.SetActive (false);
+			}else if(fill[i].name=="Fill Wait 2"){
 				fillWaitImage_2 = fill [i];
-			}
-			if(fill[i].name=="Fill Wait 3"){
+				fillWaitImage_2.gameObject.SetActive (false);
+			}else if(fill[i].name=="Fill Wait 3"){
 				fillWaitImage_3 = fill [i];
-			}
-			if(fill[i].name=="Fill Wait 4"){
+				fillWaitImage_3.gameObject.SetActive (false);
+			}else if(fill[i].name=="Fill Wait 4"){
 				fillWaitImage_4 = fill [i];
-			}
-			if(fill[i].name=="Fill Wait 5"){
+				fillWaitImage_4.gameObject.SetActive (false);
+			}else if(fill[i].name=="Fill Wait 5"){
 				fillWaitImage_5 = fill [i];
-			}
-			if(fill[i].name=="Fill Wait 6"){
+				fillWaitImage_5.gameObject.SetActive (false);
+			}else if(fill[i].name=="Fill Wait 6"){
 				fillWaitImage_6 = fill [i];
+				fillWaitImage_6.gameObject.SetActive (false);
 			}
 		}
 	}
 
 	void Update () {
+		if (!isLocalPlayer) {
+			return;
+		}
 		if (!anim.IsInTransition (0) && anim.GetCurrentAnimatorStateInfo (0).IsName ("Stand")) {
 			canAttack = true;
 		} else {
@@ -150,6 +145,9 @@ public class PlayerAttack : NetworkBehaviour {
 	} // check input
 
 	void CheckToFade() {
+		if (!isLocalPlayer) {
+			return;
+		}
 		if (fadeImages [0] == 1) {
 			if(FadeAndWait(fillWaitImage_1, 1.0f)) {
 				fadeImages [0] = 0;
@@ -189,6 +187,9 @@ public class PlayerAttack : NetworkBehaviour {
 	}
 
 	bool FadeAndWait(Image fadeImg, float fadeTime) {
+		if (!isLocalPlayer) {
+			return false;
+		}
 		bool faded = false;
 
 		if (fadeImg == null)
@@ -210,42 +211,3 @@ public class PlayerAttack : NetworkBehaviour {
 	}
 
 } // class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

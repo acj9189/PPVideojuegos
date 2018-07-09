@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerHealth : NetworkBehaviour {
 
 	public float health = 100f;
 
@@ -13,20 +14,25 @@ public class PlayerHealth : MonoBehaviour {
 
 	private Image health_Img;
 
-	public GameObject gameover;
+	private Image gameover;
 
 	void Awake() {
 		anim = GetComponent<Animator> ();
-
+		gameover = null;
 		health_Img = GameObject.Find ("Health Icon").GetComponent<Image> ();
 	}
 
 	public bool Shielded {
+
 		get { return isShielded; }
 		set { isShielded = value; }
 	}
 
 	public void TakeDamage(float amount) {
+		if (!isLocalPlayer) {
+			return;
+		}
+
 		if (!isShielded) {
 			
 			health -= amount;
@@ -34,14 +40,13 @@ public class PlayerHealth : MonoBehaviour {
 			health_Img.fillAmount = health / 100f;
 
 			if (health <= 0f) {
+
 				anim.SetBool ("Death", true);
-				Debug.Log ("Muerte");
-				this.gameover.SetActive(true);
 				if (!anim.IsInTransition (0) && anim.GetCurrentAnimatorStateInfo (0).IsName ("Death")
 				   && anim.GetCurrentAnimatorStateInfo (0).normalizedTime >= 0.95) {
 					// PLAYER DIED 
 					// DESTROY PLAYER
-//					Destroy(gameObject, 2f);
+				//	Destroy(gameObject, 5f);
 
 				}
 			}
@@ -49,6 +54,7 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	public void HealPlayer(float healAmount) {
+
 		health += healAmount;
 
 		if (health > 100f)
@@ -58,35 +64,3 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 } // class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

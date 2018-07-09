@@ -1,40 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+using UnityEngine.UI;
 
-public class CameraFollow : NetworkBehaviour {
-
-	public float follow_Height = 8f;
-	public float follow_Distance = 6f;
-
-	private Transform player;
+public class CameraFollow : MonoBehaviour {
+	private GameObject player;
 
 	private bool jugador;
-
-	private float target_Height;
-	private float current_Height;
-	private float current_Rotation;
-
+	public Image gameOver;
 	void Awake () {
 		this.jugador = false;
+		gameOver.gameObject.SetActive (false);
 		player = null;
-		//this.transform.position = this.jugadorASeguir.transform.position; 
 	}
 
 	void Update () {
 
-		if(!this.jugador){
-			if(this.player==null && GameObject.FindGameObjectWithTag ("Player")!=null){
-				player = GameObject.FindGameObjectWithTag ("Player").transform;
-				if(isLocalPlayer){
-				}
+		if (!this.jugador) {
+			if (this.player == null && GameObject.FindGameObjectWithTag ("Player") != null) {
+				player = GameObject.FindGameObjectWithTag ("Player");
+			} else {
+				return;
 			}
 			if (this.player != null) {
 				this.jugador = true;
 			}
-				
 		}
+
 		/*target_Height = player.position.y + follow_Height ;
 
 		current_Rotation = transform.eulerAngles.y ;
@@ -50,46 +42,12 @@ public class CameraFollow : NetworkBehaviour {
 		transform.position = target_Position;
 		transform.LookAt (player);*/
 		if(this.player!=null){
-			this.transform.position = player.position;
+			this.transform.position = player.transform.position;
+		}
+		float healtplayer = this.player.GetComponent<PlayerHealth> ().health;
+		if(healtplayer<0f){
+			this.gameOver.gameObject.SetActive (true);
 		}
 	}
 
 } // class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

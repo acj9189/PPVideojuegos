@@ -11,45 +11,16 @@ public class DestroyPointer : MonoBehaviour {
 	}
 
 	void Update () {
+
 		if (player==null && GameObject.FindGameObjectWithTag ("Player") != null) {
 			player = GameObject.FindGameObjectWithTag ("Player").transform;
 		}
 		if(player!=null){
-		if (Vector3.Distance (transform.position, player.position) <= 1f) {
-			Destroy (gameObject);
-		}	
+			if (Vector3.Distance (transform.position, player.position) <= 1f) {
+				Destroy (gameObject);
+			}	
 		}
 	}
 
 
 } // class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
