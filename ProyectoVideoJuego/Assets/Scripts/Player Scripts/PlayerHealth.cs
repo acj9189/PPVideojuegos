@@ -42,7 +42,7 @@ public class PlayerHealth : MonoBehaviour {
 				   && anim.GetCurrentAnimatorStateInfo (0).normalizedTime >= 0.95) {
 					// PLAYER DIED 
 					// DESTROY PLAYER
-                    Destroy(gameObject, 2f);
+                  //  Destroy(gameObject, 2f);
 					gameOver.SetActive(true);
 
 

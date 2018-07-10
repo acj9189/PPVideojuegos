@@ -18,7 +18,7 @@ public class PlayerMove : MonoBehaviour {
 	private Vector3 player_Move = Vector3.zero;
 
 	private float player_ToPointDistance;
-
+	public GameObject conversacion;
 	private float gravity = 9.8f;
 	private float height;
 
@@ -85,12 +85,22 @@ public class PlayerMove : MonoBehaviour {
 
 				GameObject PosEnemigo = hit.collider.gameObject;
 				if(PosEnemigo.tag.Equals("Enemy")){
-					Debug.Log ("ENTRO...... " + PosEnemigo.transform.position);
+					Debug.Log ("ENTRO...... Enemigo" + PosEnemigo.transform.position);
 					this.Enemigo = PosEnemigo.GetComponent<TagEnemy> ();
-					this.transform.LookAt(this.Enemigo.transform.position);
-
+					//this.transform.LookAt(this.Enemigo.transform.position);
 				}
 
+				GameObject PosAldeana = hit.collider.gameObject;
+				Debug.Log (PosAldeana.name);
+				if(PosAldeana.tag.Equals("Aldeana")){
+					Debug.Log ("ENTRO...... Aldeana" + PosAldeana.transform.position);
+					//conversacion.transform.position = PosAldeana.transform.position
+					conversacion.SetActive (true);
+					
+				}
+				else{
+					conversacion.SetActive (false);
+				}
 			}
 		} // if mouse button down
 
