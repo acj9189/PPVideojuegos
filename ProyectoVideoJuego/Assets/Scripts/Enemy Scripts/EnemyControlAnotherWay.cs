@@ -22,25 +22,20 @@ public class EnemyControlAnotherWay : MonoBehaviour {
 	private Vector3 nextDestination;
 
 	private EnemyHealth enemyHealth;
-	private bool jugador;
 	void Awake () {
 		playerTarget = null;
 		anim = GetComponent<Animator> ();
 		navAgent = GetComponent<NavMeshAgent> ();
-		jugador = false;
 		enemyHealth = GetComponent<EnemyHealth> ();
 
 	}
 
 	void Update () {
-		if (!this.jugador) {
-			if (this.playerTarget == null && GameObject.FindGameObjectWithTag ("Player") != null) {
+		if (this.playerTarget == null ) {
+			if ( GameObject.FindGameObjectWithTag ("Player") != null) {
 				playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
 			} else {
 				return;
-			}
-			if (this.playerTarget != null) {
-				this.jugador = true;
 			}
 		}
 		if (enemyHealth.health > 0 ) {

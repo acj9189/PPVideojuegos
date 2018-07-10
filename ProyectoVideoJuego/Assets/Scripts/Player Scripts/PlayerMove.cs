@@ -34,11 +34,7 @@ public class PlayerMove : NetworkBehaviour {
 		if (!isLocalPlayer) {
 			return;
 		}
-		if(isLocalPlayer){
-			if (!camaraPrincipal.gameObject.activeInHierarchy) {
-				camaraPrincipal.gameObject.SetActive (true);
-			}
-		}
+	
 		CalculateHeight ();
 		CheckIfFinishedMovement ();
 	}
@@ -57,9 +53,7 @@ public class PlayerMove : NetworkBehaviour {
 
 	void CheckIfFinishedMovement() {
 		// if we DID NOT finished movement
-		if (!isLocalPlayer) {
-			return;
-		}
+
 		if (!finished_Movement) {
 			if (!anim.IsInTransition (0) && !anim.GetCurrentAnimatorStateInfo (0).IsName ("Stand")
 			    && anim.GetCurrentAnimatorStateInfo (0).normalizedTime >= 0.8f) {
@@ -77,9 +71,9 @@ public class PlayerMove : NetworkBehaviour {
 	}
 
 	void MoveThePlayer() {
-		if (!isLocalPlayer) {
+		/*if (!isLocalPlayer) {
 			return;
-		}
+		}*/
 		if (Input.GetMouseButtonDown (0)) {
 			if(isLocalPlayer){
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -88,28 +82,21 @@ public class PlayerMove : NetworkBehaviour {
 
 
 			if (Physics.Raycast (ray, out hit)) {
-				if (hit.collider is TerrainCollider) {
+					GameObject PosEnemigo = hit.collider.gameObject;
+					if(PosEnemigo.tag.Equals("Enemy") || PosEnemigo.tag.Equals("Boss")){
+						Debug.Log ("ENTRO...... " + PosEnemigo.transform.position);
+						this.Enemigo = PosEnemigo.GetComponent<TagEnemy> ();
+						this.transform.LookAt(this.Enemigo.transform.position);
 
-					player_ToPointDistance = Vector3.Distance (transform.position, hit.point);
+					}else if (hit.collider is TerrainCollider) {
+						player_ToPointDistance = Vector3.Distance (transform.position, hit.point);
 
-					if (player_ToPointDistance >= 1.0f) {
-						canMove = true;
-						target_Pos = hit.point;
+						if (player_ToPointDistance >= 1.0f) {
+							canMove = true;
+							target_Pos = hit.point;
+						}
 					}
-
-
 				}
-
-				GameObject PosEnemigo = hit.collider.gameObject;
-				if(PosEnemigo.tag.Equals("Enemy")){
-					Debug.Log ("ENTRO...... " + PosEnemigo.transform.position);
-					this.Enemigo = PosEnemigo.GetComponent<TagEnemy> ();
-					this.transform.LookAt(this.Enemigo.transform.position);
-
-				}
-
-				}
-			
 			}
 		} // if mouse button down
 

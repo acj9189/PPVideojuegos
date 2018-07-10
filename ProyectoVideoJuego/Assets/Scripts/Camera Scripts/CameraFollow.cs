@@ -5,26 +5,33 @@ using UnityEngine.UI;
 
 public class CameraFollow : MonoBehaviour {
 	private GameObject player;
-
-	private bool jugador;
+	private GameObject [] Jugadores;
 	public Image gameOver;
 	void Awake () {
-		this.jugador = false;
 		gameOver.gameObject.SetActive (false);
 		player = null;
 	}
 
 	void Update () {
 
-		if (!this.jugador) {
-			if (this.player == null && GameObject.FindGameObjectWithTag ("Player") != null) {
-				player = GameObject.FindGameObjectWithTag ("Player");
+		if (player==null) {
+			if (GameObject.FindGameObjectsWithTag ("Player").Length>0) {
+				Jugadores = GameObject.FindGameObjectsWithTag ("Player");
+				Debug.Log (Jugadores.Length);
+				player=Jugadores[Jugadores.Length-1];
+
 			} else {
 				return;
 			}
-			if (this.player != null) {
-				this.jugador = true;
-			}
+		}
+
+		float healtplayer = this.player.GetComponent<PlayerHealth> ().health;
+		if(healtplayer<0f){
+
+			this.gameOver.gameObject.SetActive (true);
+		}
+		if(this.player!=null){
+			this.transform.position = player.transform.position;
 		}
 
 		/*target_Height = player.position.y + follow_Height ;
@@ -41,13 +48,7 @@ public class CameraFollow : MonoBehaviour {
 
 		transform.position = target_Position;
 		transform.LookAt (player);*/
-		if(this.player!=null){
-			this.transform.position = player.transform.position;
-		}
-		float healtplayer = this.player.GetComponent<PlayerHealth> ().health;
-		if(healtplayer<0f){
-			this.gameOver.gameObject.SetActive (true);
-		}
+
 	}
 
 } // class

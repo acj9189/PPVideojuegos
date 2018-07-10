@@ -12,7 +12,6 @@ public class PlayerAttack : NetworkBehaviour {
 	public Image fillWaitImage_4;
 	public Image fillWaitImage_5;
 	public Image fillWaitImage_6;
-	private Image[] fill;
 	private int[] fadeImages = new int[] {0, 0, 0, 0, 0, 0};
 
 	private Animator anim;
@@ -23,29 +22,7 @@ public class PlayerAttack : NetworkBehaviour {
 	void Awake () {
 		anim = GetComponent<Animator> ();	
 		playerMove = GetComponent<PlayerMove> ();
-		fill = FindObjectsOfType<Image> ();
-
-		for(int i=0;i<fill.Length;i++){
-			if (fill [i].name == "Fill Wait 1") {
-				fillWaitImage_1 = fill [i];
-				fillWaitImage_1.gameObject.SetActive (false);
-			}else if(fill[i].name=="Fill Wait 2"){
-				fillWaitImage_2 = fill [i];
-				fillWaitImage_2.gameObject.SetActive (false);
-			}else if(fill[i].name=="Fill Wait 3"){
-				fillWaitImage_3 = fill [i];
-				fillWaitImage_3.gameObject.SetActive (false);
-			}else if(fill[i].name=="Fill Wait 4"){
-				fillWaitImage_4 = fill [i];
-				fillWaitImage_4.gameObject.SetActive (false);
-			}else if(fill[i].name=="Fill Wait 5"){
-				fillWaitImage_5 = fill [i];
-				fillWaitImage_5.gameObject.SetActive (false);
-			}else if(fill[i].name=="Fill Wait 6"){
-				fillWaitImage_6 = fill [i];
-				fillWaitImage_6.gameObject.SetActive (false);
-			}
-		}
+	
 	}
 
 	void Update () {
@@ -65,9 +42,9 @@ public class PlayerAttack : NetworkBehaviour {
 
 	void CheckInput () {
 
-		if (!isLocalPlayer) {
+		/*if (!isLocalPlayer) {
 			return;
-		}
+		}*/
 
 		if (anim.GetInteger ("Atk") == 0) {
 			playerMove.FinishedMovement = false;
@@ -145,9 +122,9 @@ public class PlayerAttack : NetworkBehaviour {
 	} // check input
 
 	void CheckToFade() {
-		if (!isLocalPlayer) {
+		/*if (!isLocalPlayer) {
 			return;
-		}
+		}*/
 		if (fadeImages [0] == 1) {
 			if(FadeAndWait(fillWaitImage_1, 1.0f)) {
 				fadeImages [0] = 0;
@@ -187,9 +164,9 @@ public class PlayerAttack : NetworkBehaviour {
 	}
 
 	bool FadeAndWait(Image fadeImg, float fadeTime) {
-		if (!isLocalPlayer) {
+		/*if (!isLocalPlayer) {
 			return false;
-		}
+		}*/
 		bool faded = false;
 
 		if (fadeImg == null)

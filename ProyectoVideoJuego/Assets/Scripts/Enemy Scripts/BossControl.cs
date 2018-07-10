@@ -13,25 +13,22 @@ public class BossControl : MonoBehaviour {
 	private bool finishedAttacking = true;
 	private float currentAttackTime;
 	private float waitAttackTime = 1f;
-	private bool jugador;
 	void Awake () {
 		playerTarget = null;
 		bossStateChecker = GetComponent<BossStateChecker> ();
 		navAgent = GetComponent<NavMeshAgent> ();
-		jugador = false;
 		anim = GetComponent<Animator> ();
 	}
 
 	void Update () {
-		if(!this.jugador){
-			if(this.playerTarget==null && GameObject.FindGameObjectWithTag ("Player")!=null){
+		if(this.playerTarget==null ){
+			if (GameObject.FindGameObjectWithTag ("Player") != null) {
 				playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
+			} else {
+				return;
 			}
-			if (this.playerTarget != null) {
-				this.jugador = true;
-			}
-
 		}
+
 		if (finishedAttacking) {
 			GetStateControl();
 		} else {

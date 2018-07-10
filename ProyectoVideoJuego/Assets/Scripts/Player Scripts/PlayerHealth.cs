@@ -14,11 +14,10 @@ public class PlayerHealth : NetworkBehaviour {
 
 	private Image health_Img;
 
-	private Image gameover;
+//	private Image gameover;
 
 	void Awake() {
 		anim = GetComponent<Animator> ();
-		gameover = null;
 		health_Img = GameObject.Find ("Health Icon").GetComponent<Image> ();
 	}
 
@@ -46,7 +45,7 @@ public class PlayerHealth : NetworkBehaviour {
 				   && anim.GetCurrentAnimatorStateInfo (0).normalizedTime >= 0.95) {
 					// PLAYER DIED 
 					// DESTROY PLAYER
-				//	Destroy(gameObject, 5f);
+					Destroy(gameObject, 3f);
 
 				}
 			}

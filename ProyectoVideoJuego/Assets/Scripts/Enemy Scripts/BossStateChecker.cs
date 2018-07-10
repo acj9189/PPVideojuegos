@@ -17,27 +17,22 @@ public class BossStateChecker : MonoBehaviour {
 	private float distanceToTarget;
 
 	private EnemyHealth bossHealth;
-	private bool jugador;
 
 	void Awake () {
 		playerTarget = null;
 		bossHealth = GetComponent<EnemyHealth> ();
-		jugador = false;
 	}
 
 	void Update () {
-		if(!this.jugador){
-			if(this.playerTarget==null && GameObject.FindGameObjectWithTag ("Player")!=null){
+		if(this.playerTarget==null){
+			if (GameObject.FindGameObjectWithTag ("Player") != null) {
 				playerTarget = GameObject.FindGameObjectWithTag ("Player").transform;
+			} else {
+				return;
 			}
-			if (this.playerTarget != null) {
-				this.jugador = true;
-			}
-
 		}
-
 		if(playerTarget!=null){
-		SetState ();
+			SetState ();
 		}
 	}
 
