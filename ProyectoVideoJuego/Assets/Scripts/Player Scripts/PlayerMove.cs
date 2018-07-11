@@ -68,14 +68,11 @@ public class PlayerMove : MonoBehaviour {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
 
-
-
 			if (Physics.Raycast (ray, out hit)) {
 				if (hit.collider is TerrainCollider) {
 
 					player_ToPointDistance = Vector3.Distance (transform.position, hit.point);
-
-					if (player_ToPointDistance >= 1.0f) {
+					if (player_ToPointDistance >= 3.0f ) {
 						canMove = true;
 						target_Pos = hit.point;
 					}
@@ -84,10 +81,10 @@ public class PlayerMove : MonoBehaviour {
 				}
 
 				GameObject PosEnemigo = hit.collider.gameObject;
-				if(PosEnemigo.tag.Equals("Enemy")){
+				if(PosEnemigo.tag.Equals("Enemy") ||PosEnemigo.tag.Equals("Boss")){
 					Debug.Log ("ENTRO...... Enemigo" + PosEnemigo.transform.position);
 					this.Enemigo = PosEnemigo.GetComponent<TagEnemy> ();
-					//this.transform.LookAt(this.Enemigo.transform.position);
+					this.transform.LookAt(PosEnemigo.transform.position);
 				}
 
 				GameObject PosAldeana = hit.collider.gameObject;
@@ -115,7 +112,7 @@ public class PlayerMove : MonoBehaviour {
 
 			player_Move = transform.forward * moveSpeed * Time.deltaTime;
 
-			if (Vector3.Distance (transform.position, target_Pos) <= 0.1f) {
+			if (Vector3.Distance (transform.position, target_Pos) <= 0.3f) {
 				canMove = false;
 			}
 
