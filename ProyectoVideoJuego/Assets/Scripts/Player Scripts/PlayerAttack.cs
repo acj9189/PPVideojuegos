@@ -96,7 +96,7 @@ public class PlayerAttack : MonoBehaviour {
 			anim.SetInteger ("Atk", 0);
 		}
 
-		if (Input.GetKey (KeyCode.Space)) {
+		/*if (Input.GetKey (KeyCode.Space)) {
 			Vector3 targetPos = Vector3.zero;
 
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -109,7 +109,7 @@ public class PlayerAttack : MonoBehaviour {
 			transform.rotation = Quaternion.Slerp (transform.rotation,
 				Quaternion.LookRotation(targetPos - transform.position), 15f * Time.deltaTime);
 
-		}
+		}*/
 
 	} // check input
 
